@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 export class EnvVars {
   @Output() variablesChange = new EventEmitter<any[]>();
 
+  ambienteSelect:any = "";
+
   variables = [
     { key: 'ENV', value: 'dev' },
     { key: 'PORT', value: '8080' },
@@ -20,7 +22,11 @@ export class EnvVars {
   ];
 
   ngOnInit(){
-    console.log('🌐 La aplicación ha iniciado correctamente');
+    this.emitir();
+  }
+
+  actualizarEnv(){
+    this.variables[0].value = this.ambienteSelect;
     this.emitir();
   }
 
@@ -44,7 +50,6 @@ export class EnvVars {
       acc[item.key] = item.value;
       return acc;
     }, {});
-
     this.variablesChange.emit(enviromentsObject);
   }
 }

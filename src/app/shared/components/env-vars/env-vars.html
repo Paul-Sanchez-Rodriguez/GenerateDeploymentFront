@@ -1,6 +1,18 @@
 <div class="container mt-4">
   <h4>Variables de entorno Basicas</h4>
 
+  <form #myForm="ngForm" (change)="actualizarEnv()">
+    <label>
+      <input type="radio" name="color" [(ngModel)]="ambienteSelect" value="dev"/> Develop
+    </label>
+    <label>
+      <input type="radio" name="color" [(ngModel)]="ambienteSelect" value="qas"/> Certificacion
+    </label>
+    <label>
+      <input type="radio" name="color" [(ngModel)]="ambienteSelect" value="prod"/> Produccion
+    </label>
+  </form>
+
   <div class="table-responsive">
     <table class="table table-bordered">
       <thead class="table-light">
@@ -12,8 +24,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let variable of variables; let i = index">
-          <td><input type="text" class="form-control" (ngModelChange)="emitir()" [(ngModel)]="variable.key" placeholder="NOMBRE_VAR" /></td>
-          <td><input type="text" class="form-control" (ngModelChange)="emitir()" [(ngModel)]="variable.value" placeholder="valor" /></td>
+          <td><input type="text" class="form-control" (input)="emitir()" [(ngModel)]="variable.key" placeholder="NOMBRE_VAR" /></td>
+          <td><input type="text" class="form-control" (input)="emitir()" [(ngModel)]="variable.value" placeholder="valor" /></td>
           <td>
             <button class="btn btn-danger btn-sm" (click)="removeVariable(i)">
               <i class="bi bi-trash-fill"></i>

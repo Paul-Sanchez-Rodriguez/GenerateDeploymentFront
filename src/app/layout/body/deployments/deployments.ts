@@ -14,6 +14,7 @@ import { ServiceDeployment } from '../../../core/services/serviceDeployment/serv
 })
 export class Deployments {
   artifact:String = '';
+  image: String = '';
   replicas: number = 0;
   namespace:String = 'foh';
 
@@ -37,9 +38,18 @@ export class Deployments {
   }
 
   save() {
+
+    if(this.variables.ENV == "dev"){
+      this.image = "us-central1-docker.pkg.dev/foh-anthos-sandbox/foh-docker-dev/" +this.artifact + ":latest"
+    }if(this.variables.ENV == "qas"){
+      this.image = "us-central1-docker.pkg.dev/foh-anthos-sandbox/foh-docker-qa/" +this.artifact + ":latest"
+    }else{
+      this.image = "us-central1-docker.pkg.dev/foh-anthos-prod/foh-docker-prd/" +this.artifact + ":latest"
+    }
+
     const deployment:any = {
       name: this.artifact,
-      image: this.artifact,
+      image: this.image,
       namespace: this.namespace,
       replicas: this.replicas,
       enviroments: this.variables,
@@ -66,4 +76,7 @@ export class Deployments {
     })
   }
 
+  prueba(){
+    console.log(this.variables.ENV)
+  }
 }
