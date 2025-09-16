@@ -43,7 +43,7 @@ export class Deployments {
       this.image = "us-central1-docker.pkg.dev/foh-anthos-sandbox/foh-docker-dev/" +this.artifact + ":latest"
     }if(this.variables.ENV == "qas"){
       this.image = "us-central1-docker.pkg.dev/foh-anthos-sandbox/foh-docker-qa/" +this.artifact + ":latest"
-    }else{
+    }if(this.variables.ENV == "prod"){
       this.image = "us-central1-docker.pkg.dev/foh-anthos-prod/foh-docker-prd/" +this.artifact + ":latest"
     }
 

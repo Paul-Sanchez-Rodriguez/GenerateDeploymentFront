@@ -8,10 +8,10 @@ import { DeploymentGkeCore } from './layout/body/deployment-gke-core/deployment-
 import { DeploymentGkeGeneric } from './layout/body/deployment-gke-generic/deployment-gke-generic';
 
 export const routes: Routes = [
-    { path: 'Deployment Anthos', component: Deployments },
+    { path: 'DeploymentAnthos', component: Deployments },
     { path: 'configMap', component: ConfigMap },
     { path: 'secret', component: Secret },
     { path: 'DeploymentGkeCore', component: DeploymentGkeCore},
     { path: 'DeploymentGkeGeneric', component: DeploymentGkeGeneric},
-    { path: '', redirectTo: '/Deployment Anthos', pathMatch: 'full' },
+    { path: '', redirectTo: '/DeploymentAnthos', pathMatch: 'full' },
 ];

@@ -39,8 +39,8 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Value</label>
-                            <input type="text" class="form-control" [(ngModel)]="newVariable.value"
-                                name="variableValue" />
+                            <textarea rows="4" cols="50" class="form-control" [(ngModel)]="newVariable.value"
+                                name="variableValue" ></textarea>
                         </div>
                     </form>
                 </div>
@@ -70,7 +70,7 @@
                     <td class="px-4 py-3">
                         <div class="font-medium text-gray-900">{{ valores.name }}</div>
                     </td>
-                    <td class="px-4 py-3">
+                    <td class="px-4 py-3 text-truncate" style="max-width: 150px;">
                         <div class="text-gray-500 text-xs">{{ valores.value }}</div>
                     </td>
                     <td>
